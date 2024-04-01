@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: 🚀 Checkout code
         uses: actions/checkout@v2
-        
+
       - name: Use Node.js
         uses: actions/setup-node@v2
         with:
@@ -25,12 +25,10 @@ jobs:
 
       - name: 🛠️ Install
         run: |
-          cd Express-Blog-Web
           npm install
 
       - name: 🛠️ Build
         run: |
-          cd Express-Blog-Web
           npm run build
 
       - name: 🚁 部署到服务器
