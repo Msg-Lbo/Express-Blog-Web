@@ -25,8 +25,7 @@ jobs:
 
       - name: 🗑️ Delete node_modules
         run: |
-          npx rimraf node_modules
-          y
+          rm -rf node_modules
 
       - name: 🗑️ Delete package-lock.json
         run: |
