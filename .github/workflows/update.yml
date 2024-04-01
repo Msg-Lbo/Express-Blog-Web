@@ -12,10 +12,19 @@ jobs:
   build: # 自定义名称
     runs-on: ubuntu-latest
     steps:
-      - name: ♻️ 编译静态文件
+      - name: 🚀 Checkout code
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20'
+      
+      - name: 🛠️ Install
         run: |
-          cd ../../
+          cd Express-Blog-Web
           npm install
+
+      - name: 🛠️ Build
+        run: |
+          cd Express-Blog-Web
           npm run build
 
       - name: 🚁 部署到服务器
