@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: ♻️ 编译静态文件
         run: |
-          cd ../
+          cd ../../
           npm install
           npm run build
 
