@@ -23,6 +23,15 @@ jobs:
       - name: List directory contents
         run: ls -la
 
+      - name: 🗑️ Delete node_modules
+        run: |
+          npx rimraf node_modules
+          y
+
+      - name: 🗑️ Delete package-lock.json
+        run: |
+          rm package-lock.json
+      
       - name: 🛠️ Install
         run: |
           npm install
