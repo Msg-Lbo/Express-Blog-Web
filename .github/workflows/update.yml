@@ -31,14 +31,11 @@ jobs:
         run: |
           rm package-lock.json
       
-      - name: 🛠️ Install
-        run: |
-          npm install
-
       - name: 🛠️ Build
         run: |
+          npm install
           npm run build
-
+          
       - name: 🚁 部署到服务器
         uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
