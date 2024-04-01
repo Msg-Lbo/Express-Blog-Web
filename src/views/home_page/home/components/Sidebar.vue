@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="menu">
-      <n-menu v-model:value="activeKey" mode="horizontal" :options="menuOptions" @update:value="handleMenuChange" />
+      <n-menu v-model:value="activeKey" mode="horizontal" :options="menuOptions" style="width: 160px;" @update:value="handleMenuChange" />
     </div>
     <!-- 备案信息 -->
     <div class="icp">
