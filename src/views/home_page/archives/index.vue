@@ -55,13 +55,19 @@ const getArticleList = async () => {
   count.value = res.data.total;
 };
 
-// 时间戳转换
-const timestampToTime = (timestamp: number) => {
-  const date = new Date(timestamp * 1000);
+/**
+ * 时间戳转换为时间
+ * @param timestamp 时间戳(毫秒)
+ */
+ const timestampToTime = (timestamp: number) => {
+  const date = new Date(timestamp);
   const Y = date.getFullYear() + "-";
   const M = (date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1) + "-";
   const D = date.getDate() + " ";
-  return Y + M + D;
+  const h = date.getHours() + ":";
+  const m = date.getMinutes() + ":";
+  const s = date.getSeconds();
+  return Y + M + D + h + m + s;
 };
 </script>
 

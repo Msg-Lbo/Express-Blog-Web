@@ -102,6 +102,10 @@ const handleMenuChange = (key: string) => {
   .menu {
     margin: 0 auto;
     text-align: center;
+    .n-menu {
+      display: flex;
+      justify-content: center;
+    }
   }
 
   .icp {
