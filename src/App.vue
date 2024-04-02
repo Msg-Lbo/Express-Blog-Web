@@ -37,7 +37,6 @@ watch(themeStore.$state, (_oldVal, newVal) => {
 });
 onMounted(() => {
   settingStore.getSettings();
-  settingStore.getMailSettings();
   document.querySelector('link[rel="icon"]')!.setAttribute('href', settingStore.$state.siteSettings.Ico);
 });
 // 切换主题

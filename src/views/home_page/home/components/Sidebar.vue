@@ -1,20 +1,28 @@
 <template>
   <div id="sidebar" :style="{ 'background-image': `url(${theme})` }">
-    <div class="logo">
-      <img :src="Avatar" alt="" />
-      <div class="text-logo">
-        <h1>{{ Title }}</h1>
-        <p>{{ LogoText }}</p>
+    <!-- Logo -->
+    <div class="header">
+      <div class="logo">
+        <img :src="Avatar" alt="" />
+        <div class="text-logo">
+          <h1>{{ Title }}</h1>
+          <p>{{ LogoText }}</p>
+        </div>
       </div>
-    </div>
-    <div class="menu">
-      <n-menu v-model:value="activeKey" mode="horizontal" :options="menuOptions" @update:value="handleMenuChange" />
+      <div class="menu">
+        <n-menu v-model:value="activeKey" mode="horizontal" :options="menuOptions" @update:value="handleMenuChange" />
+      </div>
     </div>
     <!-- 备案信息 -->
     <div class="icp">
-      <n-button text tag="a" href="https://beian.miit.gov.cn/" target="_blank" type="primary">
-        {{ Ipc }}
-      </n-button>
+      <n-space vertical>
+        <n-button text tag="a" href="https://beian.miit.gov.cn/" target="_blank" type="primary">
+          {{ Ipc }}
+        </n-button>
+        <n-button text tag="a" href="https://icp.gov.moe/?keyword=20240518" target="_blank" type="primary">
+          萌ICP备20240518号
+        </n-button>
+      </n-space>
     </div>
   </div>
 </template>
@@ -75,48 +83,52 @@ const handleMenuChange = (key: string) => {
   background-size: cover;
   background-position: bottom;
   background-repeat: no-repeat;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
-  .logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    border-radius: 50%;
-
-    img {
-      width: 100px;
-      height: 100px;
+  .header {
+    .logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
       border-radius: 50%;
-      margin: 20px;
-      cursor: pointer;
-      transition: all 0.5s ease-in-out;
 
-      &:hover {
-        // 旋转
-        transform: rotate(360deg);
+      img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin: 20px;
+        cursor: pointer;
+        transition: all 0.5s ease-in-out;
+
+        &:hover {
+          // 旋转
+          transform: rotate(360deg);
+        }
+      }
+    }
+
+    .menu {
+      margin: 0 auto;
+      text-align: center;
+      .n-menu {
+        display: flex;
+        justify-content: center;
       }
     }
   }
 
-  .menu {
-    margin: 0 auto;
-    text-align: center;
-    .n-menu {
-      display: flex;
-      justify-content: center;
-    }
-  }
-
   .icp {
+    display: flex;
+    justify-content: center;
     width: 100%;
     min-height: 50px;
     background-color: #00000030;
     backdrop-filter: blur(10px);
     padding: 8px 0;
-    position: absolute;
-    bottom: 0;
     text-align: center;
     font-size: 12px;
   }
@@ -148,7 +160,6 @@ const handleMenuChange = (key: string) => {
     }
 
     .icp {
-      display: none;
     }
   }
 }
