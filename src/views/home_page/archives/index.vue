@@ -11,7 +11,7 @@
             :time="timestampToTime(item.create_time)"
             :key="item.id"
             @click="toOtherPage(item.id)"
-            style="cursor: pointer;"
+            style="cursor: pointer"
           />
           <n-timeline-item type="warning" v-if="page >= count" content="没有了啦,别翻了" />
           <n-timeline-item type="info" v-else content="等一等,还有一点点" />
@@ -55,13 +55,19 @@ const getArticleList = async () => {
   count.value = res.data.total;
 };
 
-// 时间戳转换
+/**
+ * 时间戳转换为时间
+ * @param timestamp 时间戳(毫秒)
+ */
 const timestampToTime = (timestamp: number) => {
-  const date = new Date(timestamp * 1000);
+  const date = new Date(timestamp);
   const Y = date.getFullYear() + "-";
   const M = (date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1) + "-";
   const D = date.getDate() + " ";
-  return Y + M + D;
+  const h = date.getHours() + ":";
+  const m = date.getMinutes() + ":";
+  const s = date.getSeconds();
+  return Y + M + D + h + m + s;
 };
 </script>
 

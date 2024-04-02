@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="menu">
-      <n-menu v-model:value="activeKey" mode="horizontal" :options="menuOptions" style="width: 160px;" @update:value="handleMenuChange" />
+      <n-menu v-model:value="activeKey" mode="horizontal" :options="menuOptions" @update:value="handleMenuChange" />
     </div>
     <!-- 备案信息 -->
     <div class="icp">
@@ -103,6 +103,10 @@ const handleMenuChange = (key: string) => {
   .menu {
     margin: 0 auto;
     text-align: center;
+    .n-menu {
+      display: flex;
+      justify-content: center;
+    }
   }
 
   .icp {
