@@ -1,7 +1,7 @@
 name: push自动更新
 
 on:
-  push:
+  pull_request:
     branches:
       - main
 
