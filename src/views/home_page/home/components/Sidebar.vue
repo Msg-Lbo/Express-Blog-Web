@@ -76,6 +76,7 @@ const handleMenuChange = (key: string) => {
   background-position: bottom;
   background-repeat: no-repeat;
   position: relative;
+
   .logo {
     display: flex;
     justify-content: center;
@@ -126,6 +127,7 @@ const handleMenuChange = (key: string) => {
   #sidebar {
     height: auto;
     background-position: top;
+
     .logo {
       img {
         width: 70px;

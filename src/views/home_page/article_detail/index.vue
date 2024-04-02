@@ -4,7 +4,7 @@
       <div class="content" ref="containerRef">
         <h1 style="text-align: center">{{ articleDetail?.title }}</h1>
         <n-scrollbar style="max-height: calc(100vh - 40px - 45px)">
-          <MdPreview :editorId="pId" :modelValue="articleDetail?.content" :theme="theme" previewTheme="github" />
+          <MdPreview :editorId="pId" :modelValue="articleDetail?.content" :theme="theme" previewTheme="vuepress" />
         </n-scrollbar>
       </div>
       <div class="right-bar">
