@@ -26,6 +26,9 @@
         <n-form-item-gi :span="12" label="ICP备案" path="Ipc">
           <n-input v-model:value="model.Ipc" placeholder="Input" />
         </n-form-item-gi>
+        <n-form-item-gi :span="12" label="萌备" path="Ipc">
+          <n-input v-model:value="model.Moe" placeholder="Input" />
+        </n-form-item-gi>
         <n-form-item-gi :span="12" label="主页左侧背景(light)" path="LeftBgLight">
           <n-input v-model:value="model.LeftBgLight" placeholder="Input" />
         </n-form-item-gi>
@@ -71,6 +74,7 @@ const model = ref({
   LogoText: LogoText || "",
   LogoText2: LogoText2 || "",
   GongAn: GongAn || "",
+  Moe: "萌ICP备20240518号" || "",
   Ipc: Ipc || "",
   LeftBgLight: LeftBgLight || "",
   LeftBgDark: LeftBgDark || "",

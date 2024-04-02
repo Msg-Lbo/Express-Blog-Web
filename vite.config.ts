@@ -17,7 +17,9 @@ export default defineConfig({
       '/api': {
         target: 'https://api.ylmty.cc',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
+        rewrite(path) {
+          return path.replace(/^\/api/, '')
+        },
       }
     },
   },

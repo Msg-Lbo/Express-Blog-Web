@@ -5,9 +5,6 @@
         <n-tab-pane name="site settings" tab="站点设置">
           <site-settings />
         </n-tab-pane>
-        <n-tab-pane name="email server" tab="邮件服务">
-          <mail-settings />
-        </n-tab-pane>
       </n-tabs>
     </n-card>
   </div>
@@ -15,7 +12,6 @@
 
 <script setup lang="ts">
 import siteSettings from "./components/SiteSettings.vue";
-import mailSettings from "./components/MailServerSettings.vue";
 document.title = "设置";
 </script>
 

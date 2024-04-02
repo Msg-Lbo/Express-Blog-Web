@@ -18,6 +18,7 @@
               </div>
               <div class="actions">
                 <n-space justify="center">
+                  <n-button type="primary" text @click="openUrl(item.url)">打开</n-button>
                   <n-button type="success" text @click="allowFriend(item.id)">通过</n-button>
                   <n-popover placement="bottom" trigger="click">
                     <template #trigger>
@@ -30,6 +31,7 @@
                       <n-button @click="refuseFriend(item.id)" type="error" text>提交</n-button>
                     </div>
                   </n-popover>
+                  <n-button type="warning" text @click="allowFriend(item.id)">删除</n-button>
                 </n-space>
               </div>
             </div>
@@ -44,12 +46,22 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import { getFriendApi, allowFriendApi, refuseFriendApi } from "@/apis/friend";
 import { useMessage } from "naive-ui";
 const page = ref(1);
 const message = useMessage();
 const reason = ref("");
+
+onMounted(() => {
+  getFriends(0);
+});
+
+// 打开链接
+const openUrl = (url: string) => {
+  window.open(url, "_blank");
+};
+
 // 获取指定状态友链
 const friends = ref<any>([]);
 const getFriends = async (status: number) => {
@@ -58,7 +70,6 @@ const getFriends = async (status: number) => {
     friends.value = res.data;
   }
 };
-getFriends(0);
 
 // 通过友链
 const allowFriend = async (id: number) => {

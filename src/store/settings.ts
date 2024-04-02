@@ -1,4 +1,4 @@
-import { getMailSettingsApi, getSettingsApi } from '@/apis/settings'
+import { getSettingsApi } from '@/apis/settings'
 import { defineStore } from 'pinia'
 
 export const useSettingsStore = defineStore('settings', {
@@ -38,13 +38,6 @@ export const useSettingsStore = defineStore('settings', {
                 this.setSettings(settings)
             }
         },
-        async getMailSettings() {
-            const res = await getMailSettingsApi();
-            if (res.code === 200) {
-                const settings = res.data;
-                this.setMailSettings(settings)
-            }
-        }
     },
     // 持久化
     persist: true
