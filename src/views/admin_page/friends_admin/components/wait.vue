@@ -31,7 +31,7 @@
                       <n-button @click="refuseFriend(item.id)" type="error" text>提交</n-button>
                     </div>
                   </n-popover>
-                  <n-button type="warning" text @click="allowFriend(item.id)">删除</n-button>
+                  <n-button type="warning" text @click="deleteFriend(item.id)">删除</n-button>
                 </n-space>
               </div>
             </div>
@@ -47,7 +47,7 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import { getFriendApi, allowFriendApi, refuseFriendApi } from "@/apis/friend";
+import { getFriendApi, allowFriendApi, refuseFriendApi, deleteFriendApi } from "@/apis/friend";
 import { useMessage } from "naive-ui";
 const page = ref(1);
 const message = useMessage();
@@ -83,6 +83,15 @@ const allowFriend = async (id: number) => {
 // 驳回友链
 const refuseFriend = async (id: number) => {
   const res = await refuseFriendApi(id, reason.value);
+  if (res.code === 200) {
+    message.success(res.msg);
+    getFriends(0);
+  }
+};
+
+// 删除友链
+const deleteFriend = async (id: number) => {
+  const res = await deleteFriendApi(id);
   if (res.code === 200) {
     message.success(res.msg);
     getFriends(0);

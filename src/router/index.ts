@@ -1,6 +1,7 @@
 import { useUserStore } from "@/store/userSotre";
 import { createRouter, createWebHistory } from "vue-router";
 import { createDiscreteApi } from 'naive-ui'
+import { isAdminApi } from '@/apis/user'
 const { message } = createDiscreteApi(['message'])
 
 const router = createRouter({
@@ -99,32 +100,29 @@ const router = createRouter({
 });
 
 
-router.beforeEach((to, from, next) => {
+const isAdmin = async () => {
+  const res = await isAdminApi();
+  if (res.code === 200 && res.msg) {
+    return true;
+  }else{
+    return false;
+  }
+}
+
+router.beforeEach(async (to, from, next) => {
   const userStore = useUserStore();
   // 如果需要登录
   if (to.meta.requireAuth) {
     if (userStore.userInfo.account === '') {
       message.error('您还没有登录，请先登录');
       next('/login');
+    }
+    // 如果是管理员
+    if (await isAdmin()) {
+      next();
     } else {
-      userStore.isLogin().then(res => {
-        // 是否登陆过期
-        if (res === true) {
-          // 登陆未过期，判断是否是管理员
-          userStore.isAdmin().then(res => {
-            if (res === true) {
-              // 是管理员，可以继续访问
-              next();
-            } else {
-              message.error('您不是管理员，无法访问该页面');
-              next(from)
-            }
-          });
-        } else {
-          message.error('登录已过期，请重新登录');
-          next('/login');
-        }
-      });
+      message.error('您不是管理员，无法访问');
+      next('/login');
     }
   } else {
     // 不需要登录的情况下直接放行

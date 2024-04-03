@@ -33,18 +33,11 @@ export const logoutApi = async () => {
         method: 'POST'
     })
 }
+
 // 是否管理员
-export const isAdminApi = async (account: string) => {
+export const isAdminApi = async () => {
     return await $http({
         url: '/user/is-admin',
-        method: 'post',
-        data: { account }
-    })
-}
-// 登陆是否过期
-export const isLoginExpiredApi = async () => {
-    return await $http({
-        url: '/user/is-login',
-        method: 'post'
+        method: 'GET'
     })
 }
