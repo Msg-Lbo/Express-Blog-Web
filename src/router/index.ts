@@ -109,7 +109,7 @@ const isAdmin = async () => {
   }
 }
 
-router.beforeEach(async (to, from, next) => {
+router.beforeEach(async (to, _from, next) => {
   const userStore = useUserStore();
   // 如果需要登录
   if (to.meta.requireAuth) {
