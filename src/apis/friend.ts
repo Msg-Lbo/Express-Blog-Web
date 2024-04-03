@@ -20,7 +20,7 @@ export const getFriendByPassApi = async () => {
 }
 
 // 申请友链
-export const addFriendApi = async (data: { name: string, link: string, email: string, description: string, logo: string, code: string }) => {
+export const addFriendApi = async (data: { name: string, link: string, email: string, description: string, logo: string, code?: string }) => {
     return await $http({
         url: '/friend/apply-friend',
         method: 'POST',
@@ -37,7 +37,7 @@ export const allowFriendApi = async (id: number) => {
     })
 }
 
-// 拒绝友链
+// 驳回友链
 export const refuseFriendApi = async (id: number, reason: string) => {
     return await $http({
         url: '/friend/refuse-friend',
@@ -46,6 +46,15 @@ export const refuseFriendApi = async (id: number, reason: string) => {
             id,
             reason
         }
+    })
+}
+
+// 删除友链
+export const deleteFriendApi = async (id: number) => {
+    return await $http({
+        url: '/friend/delete-friend',
+        method: 'POST',
+        data: { id }
     })
 }
 

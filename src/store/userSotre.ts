@@ -1,4 +1,4 @@
-import { isAdminApi, isLoginExpiredApi, logoutApi } from '@/apis/user'
+import { logoutApi } from '@/apis/user'
 import router from '@/router'
 import { defineStore } from 'pinia'
 import { createDiscreteApi } from 'naive-ui'
@@ -19,20 +19,6 @@ export const useUserStore = defineStore('user', {
     actions: {
         setUserInfo(userInfo: any) {
             this.userInfo = userInfo
-        },
-        async isAdmin() {
-            const res = await isAdminApi(this.userInfo.account)
-            if (res.data.identity === "管理员") {
-                return true
-            }
-            return false
-        },
-        async isLogin(){
-            const res = await isLoginExpiredApi()
-            if(res.code === 200){
-                return true
-            }
-            return false
         },
         async logout() {
             const res = await logoutApi()

@@ -13,15 +13,6 @@ export default defineConfig({
   ],
   server: {
     host: '127.0.0.1',
-    proxy: {
-      '/api': {
-        target: 'https://api.ylmty.cc',
-        changeOrigin: true,
-        rewrite(path) {
-          return path.replace(/^\/api/, '')
-        },
-      }
-    },
   },
   resolve: {
     alias: {

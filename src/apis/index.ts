@@ -27,8 +27,13 @@ httpInstance.interceptors.request.use((config) => {
     return Promise.reject(error)
 })
 
-httpInstance.defaults.baseURL = import.meta.env.VITE_BASE_URL + '/api/v1';
-httpInstance.defaults.url = import.meta.env.VITE_BASE_URL
+if (process.env.NODE_ENV === 'development') {
+    httpInstance.defaults.baseURL = import.meta.env.VITE_BASE_URL_DEV + '/api/v1';
+    httpInstance.defaults.url = import.meta.env.VITE_BASE_URL_DEV
+} else {
+    httpInstance.defaults.baseURL = import.meta.env.VITE_BASE_URL + '/api/v1';
+    httpInstance.defaults.url = import.meta.env.VITE_BASE_URL
+}
 
 // 响应拦截器
 export const $http = async (config: AxiosRequestConfig) => {
